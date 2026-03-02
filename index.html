@@ -1233,13 +1233,14 @@ function formatTime(s) {
     document.getElementById('current' + i).textContent = formatTime(audio.currentTime);
   });
   audio.addEventListener('ended', () => {
-    const card = document.getElementById('player' + i).closest('.track-card');
-    const card = document.getElementById('player' + i).closest('.track-card');
-    if (card) {
-      card.classList.remove('playing');
-      card.querySelector('.icon-play').style.display = '';
-      card.querySelector('.icon-pause').style.display = 'none';
+    var endCard = document.getElementById('player' + i).closest('.track-card');
+    if (endCard) {
+      endCard.classList.remove('playing');
+      endCard.querySelector('.icon-play').style.display = '';
+      endCard.querySelector('.icon-pause').style.display = 'none';
     }
+    document.getElementById('progress' + i).style.width = '0%';
+    document.getElementById('current' + i).textContent = '0:00';
     currentAudio = null;
     currentBtn = null;
   });
